@@ -97,7 +97,7 @@ describe("About Applying What We Have Learnt", function() {
 
     expect(ingredientCount['mushrooms']).toBe(2);
   });
-
+    // finished assignment
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
   /*
