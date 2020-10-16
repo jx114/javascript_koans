@@ -38,8 +38,9 @@ describe("About Applying What We Have Learnt", function() {
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
       var productsICanEat = [];
-      products.filter((pizza) => pizza.containNuts !== true && pizza.ingredients.some((ingredients)=> ingredients !== "mushrooms" ? productsICanEat.push(pizza) : false))
-      /* solve using filter() & all() / any() */
+
+      products.filter((pizza) => pizza.containsNuts === false && pizza.ingredients.indexOf("mushrooms") === -1 ? productsICanEat.push(pizza): false);
+      /* solve using filter() & (all() / any() */) // => those are ruby methods btw.
 
       expect(productsICanEat.length).toBe(1);
   });
@@ -55,14 +56,18 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
-
-    expect(233168).toBe(FILL_ME_IN);
+    var sum = 0;    /* try chaining range() and reduce() */
+    let sorted = [];
+    for (let i = 0; i <1000; i+=1){
+      i % 3 === 0 || i % 5 === 0 ? sorted.push(i) : false
+    }
+    sum = sorted.reduce((acc,num) => acc + num);
+    expect(233168).toBe(sum);
   });
 
   /*********************************************************************************/
