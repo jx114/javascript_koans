@@ -66,7 +66,7 @@ describe("About Applying What We Have Learnt", function() {
     for (let i = 0; i <1000; i+=1){
       i % 3 === 0 || i % 5 === 0 ? sorted.push(i) : false
     }
-    sum = sorted.reduce((acc,num) => acc + num);
+    sum = sorted.reduce((ingredientCount,num) => ingredientCount + num);
     expect(233168).toBe(sum);
   });
 
@@ -80,15 +80,22 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   it("should count the ingredient occurrence (functional)", function () {
-    var ingredientCount = { "{ingredient name}": 0 };
+    var ingredientCount = {};
+    // tally counter with reduce
+    const reducer = (ingredientCount, curr) => {
+      ingredientCount[curr] = (ingredientCount[curr] || 0) + 1
+      return ingredientCount
+    }
+
+    console.log(products.map(pizza => pizza.ingredients).flat().reduce(reducer,{}));
 
     /* chain() together map(), flatten() and reduce() */
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
